@@ -23,10 +23,12 @@ func _unhandled_input(event): # to Play again
 func start_game():
 	GameState = "Playing"
 	$UI/MainMenu.hide()
+	$Map.show()
 	print(GameState)
 func game_over():
 	GameState = "MainMenu"
 	$UI/MainMenu.show()
+	$Map.hide()
 	print(GameState)
 	
 
