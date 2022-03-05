@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://art/yellow.png" type="Texture" id=1]
 [ext_resource path="res://art/blue.png" type="Texture" id=2]
 [ext_resource path="res://art/white.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 0.54, 2.0012 )
@@ -63,3 +64,6 @@ shape = SubResource( 2 )
 [node name="Collision" type="CollisionShape2D" parent="Borders/Border2"]
 position = Vector2( 9, 363 )
 shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 492, 345 )
