@@ -2,14 +2,13 @@ extends Node2D
 
 export (PackedScene) var Ui = preload("res://scenes/UI.tscn")
 
+var game_state = "main_menu"
+
 #var ui = preload("res://scenes/UI.tscn").instance()
 
 
-var GameState = "MainMenu"
-
-
 func _ready():
-	print(GameState)
+	print(game_state)
 
 
 func _unhandled_input(event): # to Play again
@@ -21,15 +20,15 @@ func _unhandled_input(event): # to Play again
 
 
 func start_game():
-	GameState = "Playing"
+	game_state = "playing"
 	$UI/MainMenu.hide()
 	$Map.show()
-	print(GameState)
+	print(game_state)
 func game_over():
-	GameState = "MainMenu"
+	game_state = "main_menu"
 	$UI/MainMenu.show()
 	$Map.hide()
-	print(GameState)
+	print(game_state)
 	
 
 
