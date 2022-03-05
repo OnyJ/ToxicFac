@@ -1,41 +1,43 @@
 extends Node2D
 
-export (PackedScene) var Ui = preload("res://scenes/UI.tscn")
-export (PackedScene) var Map = preload("res://scenes/Map.tscn")
-export (PackedScene) var Player = preload("res://scenes/Player.tscn")
+#export (PackedScene) var soome_item = preload("res://scenes/SomeItem.tscn")
 
-var ui = load("res://scenes/UI.tscn").instance()
-var map = load("res://scenes/Map.tscn").instance()
+var ui = load("res://scenes/UI.tscn")
+var map = load("res://scenes/Map.tscn")
 var game_state = "main_menu"
-#var ui = preload("res://scenes/UI.tscn").instance()
 
 
 func _ready():
-	add_child(ui)
+	add_child(ui.instance())
 	$UI/MainMenu.show()
 	print(game_state)
 
 
-func _unhandled_input(event): # to Play again
+func _unhandled_input(event):
 	# event is good for a one time action
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") && !is_playing():
 		start_game()
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") && !is_menu():
 		game_over()
 
 
 func start_game():
 	game_state = "playing"
-	add_child(map)
+	add_child(map.instance())
 	$UI/MainMenu.hide()
 	print(game_state)
 
 func game_over():
 	game_state = "main_menu"
-	remove_child(map)
+	$Map.queue_free()
 	$UI/MainMenu.show()
 	print(game_state)
-	
+
+
+func is_playing():
+	return game_state == "playing"
+func is_menu():
+	return game_state == "main_menu"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
