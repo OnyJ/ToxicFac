@@ -52,13 +52,13 @@ shape = SubResource( 1 )
 [node name="Borders" type="Node2D" parent="."]
 position = Vector2( 490, 347 )
 
-[node name="Border1" type="Area2D" parent="Borders"]
+[node name="Border1" type="StaticBody2D" parent="Borders"]
 
 [node name="Collision" type="CollisionShape2D" parent="Borders/Border1"]
 position = Vector2( 7.75, -356 )
 shape = SubResource( 2 )
 
-[node name="Border2" type="Area2D" parent="Borders"]
+[node name="Border2" type="StaticBody2D" parent="Borders"]
 
 [node name="Collision" type="CollisionShape2D" parent="Borders/Border2"]
 position = Vector2( 9, 363 )
