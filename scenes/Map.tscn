@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://art/yellow.png" type="Texture" id=1]
 [ext_resource path="res://art/blue.png" type="Texture" id=2]
 [ext_resource path="res://art/white.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Map.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Bomb.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 0.54, 2.0012 )
@@ -11,7 +13,14 @@ extents = Vector2( 0.54, 2.0012 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 352.75, 10 )
 
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 42, -3, 0, 0, 0, 0, 42, 640, 0, 0, 0, 0, -13, 636, 0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 42, -3 )
+}
+
 [node name="Map" type="Node2D"]
+script = ExtResource( 5 )
+bomb_scene = ExtResource( 6 )
 
 [node name="GroundYellow" type="Sprite" parent="."]
 position = Vector2( 500, 350 )
@@ -67,3 +76,19 @@ shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 492, 345 )
+
+[node name="BombSpawnTimer" type="Timer" parent="."]
+wait_time = 1.2
+autostart = true
+
+[node name="BombPath" type="Path2D" parent="."]
+position = Vector2( 90, 30 )
+curve = SubResource( 3 )
+
+[node name="BombSpawnLocation" type="PathFollow2D" parent="BombPath"]
+position = Vector2( 42, -3 )
+rotation = 1.5708
+
+[node name="Bomb" parent="BombPath/BombSpawnLocation" instance=ExtResource( 6 )]
+
+[connection signal="timeout" from="BombSpawnTimer" to="." method="_on_BombSpawnTimer_timeout"]

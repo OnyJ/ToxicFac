@@ -2,12 +2,21 @@ extends Sprite
 
 func _ready():
 	# start timer
-	pass # Replace with function body.
+	var rand = RandomNumberGenerator.new()
+	var bombscene = load("res://Bomb.tscn")
+	
+#	var spawn_size = 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+# animations
+	# Spawn : slides from left to position 0.
+	# Success : slides from 0 to right
+
 
 func bomb_is_toxic():
 	# Toxic color
