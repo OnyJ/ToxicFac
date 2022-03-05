@@ -6,3 +6,32 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MainMenu" type="ColorRect" parent="."]
+margin_right = 1023.0
+margin_bottom = 598.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="MainMenu"]
+margin_left = 494.0
+margin_top = 270.0
+margin_right = 549.0
+margin_bottom = 284.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ToxicFab"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Press space" type="Label" parent="MainMenu"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 484.0
+margin_top = 355.0
+margin_right = 560.0
+margin_bottom = 369.0
+text = "Press space"
+__meta__ = {
+"_edit_use_anchors_": false
+}
