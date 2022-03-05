@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://art/white.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Bomb.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1.98958, 2 )
+
+[node name="Bomb" type="Sprite"]
+modulate = Color( 1, 0.4, 0, 1 )
+scale = Vector2( 12, 12 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2( 0.0104167, 0 )
+shape = SubResource( 1 )
